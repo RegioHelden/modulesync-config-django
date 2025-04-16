@@ -59,6 +59,5 @@ jobs:
         run: |
           bundle exec msync update --verbose \
             --pr \
-            --pr-labels modulesync \
-            --pr-title "modulesync $(git describe)" \
-            --message "modulesync $(git describe)"
+            --pr-labels infrastucture \
+            --pr-title "Updates from modulesync"
