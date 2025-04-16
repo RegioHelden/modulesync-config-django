@@ -1,0 +1,20 @@
+---
+:global:
+  python_min_version: "3.11"
+  module_rootname: ""
+  module_description: ""
+  module_keywords: [""]
+  dependencies: [""]
+  max_line_length: 120
+
+.devcontainer/devcontainer.json:
+  run_services: ["app"]
+  # renovate: datasource=github-releases depName=astral-sh/ruff-vscode
+  vscode_ruff: "2025.8.0"
+
+compose.yaml:
+  compose_command: "test"
+
+Dockerfile:
+  # renovate: datasource=github-releases depName=astral-sh/uv
+  uv_version: "0.6.14"

@@ -1,0 +1,14 @@
+---
+services:
+  app:
+    build: .
+    entrypoint: msync
+    command: update --noop
+    volumes:
+      - .:/app
+      - $SSH_AUTH_SOCK:/ssh-agent  # Forward local machine SSH key to docker
+      - ~/.ssh:/home/msync/.ssh
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
+    env_file:
+      - .env

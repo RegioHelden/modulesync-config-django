@@ -1,0 +1,7 @@
+---
+- django-celery-token-bucket
+- django-languageselect
+- django-kafka
+- django-temporalio
+- django-scrubber
+- django-datawatch

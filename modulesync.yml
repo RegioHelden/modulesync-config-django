@@ -1,0 +1,5 @@
+---
+git_base: 'git@github.com:'
+namespace: RegioHelden
+branch: modulesync
+message: "Update from RegioHelden's modulesync-config-django"

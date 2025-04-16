@@ -1,0 +1,64 @@
+---
+name: Update all modules
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GIT_AUTHOR_NAME: regiohelden-dev
+  GIT_AUTHOR_EMAIL: 3070722+regiohelden-dev@users.noreply.github.com
+  GIT_COMMITTER_NAME: regiohelden-dev
+  GIT_COMMITTER_EMAIL: 3070722+regiohelden-dev@users.noreply.github.com
+  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+  GITHUB_BASE_URL: https://api.github.com
+
+jobs:
+  msync:
+    runs-on: ubuntu-latest
+    name: Run msync against all modules
+    if: ${{ github.repository_owner == 'RegioHelden' }}
+    steps:
+      - name: Checkout code
+        # the action has a ssh-key option.
+        # when provided, it configures the ssh/git config to authenticate automatically with that key to the source repo
+        # the authentication won't be used for other repos (which we need for msync), so we cannot use the option
+        # that's the reason for the 'Add SSH key' step
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: 0
+          persist-credentials: false
+          
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+
+      - name: Add SSH key
+        run: |
+            mkdir -p ~/.ssh
+            echo "${{ secrets.MODULESYNC_SSH_PRIVATE_KEY }}" > ~/.ssh/github_actions
+            chmod 600 ~/.ssh/github_actions
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+            ssh-add ~/.ssh/github_actions
+
+      - name: Set git user, email and commit signing
+        run: |
+          git config --global user.email "$GIT_AUTHOR_EMAIL"
+          git config --global user.name "$GIT_AUTHOR_NAME"
+          git config --global gpg.format ssh
+          git config --global user.signingkey ~/.ssh/github_actions
+          git config --global commit.gpgsign true
+
+      - name: Run msync
+        env:
+          # https://github.com/voxpupuli/modulesync?tab=readme-ov-file#submitting-prsmrs-to-github-or-gitlab
+          GITHUB_TOKEN: '${{ secrets.MODULESYNC_PERSONAL_ACCESS_TOKEN }}'
+        run: |
+          bundle exec msync update --verbose \
+            --pr \
+            --pr-labels modulesync \
+            --pr-title "modulesync $(git describe)" \
+            --message "modulesync $(git describe)"
