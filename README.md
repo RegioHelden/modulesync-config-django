@@ -32,10 +32,6 @@ To see the updates on the target projects that would result from your changes
 docker compose up
 ```
 
-#--------------------------------------------------------
-#--------------------------------------------------------
-#--------------------------------------------------------
-
 ## Per-project settings
 
 Each project can have a `.sync.yml` file, which will overwrite settings from the global config (see `config_defaults.yml`)
@@ -63,12 +59,10 @@ compose.yaml:
 
 ## Publish your changes
 
-Commit the changes to a merge request on this repo.
+Commit the changes to a pull request on this repo.
 The build pipeline will first do a dry run for the reviewer to be able to check the changes.
 
-When the MR is merged into the main branch, another pipeline job will create the MRs on the target projects.
-
-Once they're approved, they will be assigned back to the modulesync MR author for merging.
+When this PR is merged into the main branch, another pipeline job will create the PRs on the target projects.
 
 ## ModuleSync Docs
 
