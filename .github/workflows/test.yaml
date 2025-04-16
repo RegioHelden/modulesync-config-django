@@ -20,4 +20,4 @@ jobs:
           bundler-cache: true
 
       - name: Run msync --noop
-        run: bundle exec msync update --noop
+        run: bundle exec msync update --noop --git-base=https://github.com/ --branch noop
