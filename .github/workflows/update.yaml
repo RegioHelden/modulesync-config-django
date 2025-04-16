@@ -27,7 +27,7 @@ jobs:
         # that's the reason for the 'Add SSH key' step
         uses: actions/checkout@v4
         with:
-         fetch-depth: 0
+          fetch-depth: 0
           persist-credentials: false
           
       - name: Setup ruby
