@@ -34,7 +34,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "<%= @configs['python_target_version'] %>"
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v5
