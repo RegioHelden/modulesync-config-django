@@ -19,6 +19,8 @@ jobs:
       contents: write
       id-token: write
     uses: regiohelden/github-reusable-workflows/.github/workflows/build-and-publish.yaml@v2.1.0
+    with:
+      python-version: "<%= @configs['python_target_version'] %>"
 
   # must be defined in the repo as trusted publishing does not work with reusable workflows yet
   # see https://github.com/pypi/warehouse/issues/11096
@@ -34,7 +36,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "<%= @configs['python_target_version'] %>"
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v5
