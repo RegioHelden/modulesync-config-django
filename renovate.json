@@ -82,7 +82,7 @@
             "matchStrings": [
                 "uses: (?<depName>\\w+\/[\\w-]+)@(?<currentValue>[\\w+\\.]*)"
             ],
-            "datasourceTemplate": "gitlab-tags"
+            "datasourceTemplate": "github-actions"
         }
     ],
     "packageRules": [
