@@ -57,6 +57,86 @@ compose.yaml:
   unmanaged: true
 ```
 
+## Required setup steps
+
+### On manages repositories
+
+Make sure branches are deleted after merge so that modulesync always starts clean
+
+* As a repository admin
+* Go to the repository settings
+* Scroll down to the `Pull requests` section
+* Check `Automatically delete head branches `
+
+### On this modulesync repository
+
+Set proper values for `GIT_AUTHOR_NAME`, `GIT_COMMITTER_NAME`, `GIT_AUTHOR_EMAIL` and `GIT_COMMITTER_EMAIL` in `.github/workflows/update.yaml`
+
+* Use the username of the user that should open the modulesync MRs as `GIT_AUTHOR_NAME` and `GIT_COMMITTER_NAME`
+* Use the anonymous committer email address of that user as `GIT_AUTHOR_EMAIL` and `GIT_COMMITTER_EMAIL`
+  * As the user running modulesync
+  * Click on your profile picture in the top right corner
+  * Go to `Settings`
+  * Under `Access` select `Emails`
+  * Under `Primary email address`, your anonymous committer email is listed in the explanation text
+
+Set up SSH key
+
+* Create an SSH key
+  * Run `ssh-keygen -t ed25519`
+  * Don't set a passphrase
+* Make the private part available as secret `MODULESYNC_SSH_PRIVATE_KEY` on this repository
+  * As a repository admin
+  * Go to repository settings
+  * Under `Security`, open `Secrets and variables` and select `Actions`
+  * Click `New repository secret`
+  * Use `MODULESYNC_SSH_PRIVATE_KEY` as `Name`
+  * Set the private part of the SSH key as `Secret`
+* Add the public part as authentication key
+  * As the user running modulesync
+  * Click on your profile picture in the top right corner
+  * Go to `Settings`
+  * Go to `Developer Settings`
+  * Under `Access`, select `SSH and GPG keys`
+  * Click `New SSH key`
+  * Use `ModuleSync commit key` as `Title`
+  * Use `Authentication Key` as `Key type`
+  * Set the public part of the SSH key as `Key`
+* Add the public part as signing key
+  * As the user running modulesync
+  * Click on your profile picture in the top right corner
+  * Go to `Settings`
+  * Go to `Developer Settings`
+  * Under `Access`, select `SSH and GPG keys`
+  * Click `New SSH key`
+  * Use `ModuleSync signing key` as `Title`
+  * Use `Signing Key` as `Key type`
+  * Set the public part of the SSH key as `Key`
+
+Create a personal access token and make it available as secret `MODULESYNC_PERSONAL_ACCESS_TOKEN` on this repository
+
+* Create the token
+  * As the user running modulesync
+  * Click on your profile picture in the top right corner
+  * Go to `Settings`
+  * Go to `Developer Settings`
+  * Open `Personal acccess tokens` and select `Fine grained tokens`
+  * Click `Generate new token`
+  * Select the organization owning the managed repos as `Resource owner`
+  * Select that the token never expires
+  * Select `All repositories` for `Repository access`
+  * Select the following `Repository permissions`
+    * `Metadata` read only
+    * `Pull requests` read and write
+  * Copy that token!
+* Make the token available
+  * As a repository admin
+  * Go to repository settings
+  * Under `Security`, open `Secrets and variables` and select `Actions`
+  * Click `New repository secret`
+  * Use `MODULESYNC_PERSONAL_ACCESS_TOKEN` as `Name`
+  * Set the just copied PAT as `Secret`
+
 ## Publish your changes
 
 Commit the changes to a pull request on this repo.
