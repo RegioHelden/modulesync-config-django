@@ -1,4 +1,5 @@
 FROM ruby:3-alpine
+# renovate: datasource=rubygems depName=modulesync
 ENV MODULESYNC_VERSION=3.3.0
 
 RUN apk update \

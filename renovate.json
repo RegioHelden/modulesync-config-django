@@ -1,0 +1,100 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "enabled": true,
+    "timezone": "Europe/Berlin",
+    "extends": [
+        "config:recommended",
+        ":semanticPrefixFixDepsChoreOthers",
+        ":prConcurrentLimitNone",
+        ":prHourlyLimitNone"
+    ],
+    "enabledManagers": [
+        "bundler",
+        "custom.regex",
+        "github-actions"
+    ],
+    "dockerfile": {
+        "enabled": false
+    },
+    "docker-compose": {
+        "enabled": false
+    },
+    "configMigration": false,
+    "rangeStrategy": "pin",
+    "vulnerabilityAlerts": {
+        "labels": [
+            "security"
+        ]
+    },
+    "branchConcurrentLimit": 0,
+    "rebaseWhen": "conflicted",
+    "updateNotScheduled": true,
+    "separateMajorMinor": false,
+    "separateMultipleMajor": false,
+    "separateMinorPatch": true,
+    "autoApprove": false,
+    "automerge": false,
+    "labels": [
+        "infrastructure"
+    ],
+    "draftPR": false,
+    "prCreation": "immediate",
+    "gitAuthor": "Renovate bot <server@regiohelden.de>",
+    "filterUnavailableUsers": true,
+    "ignoreDeps": [],
+    "customManagers": [
+        {
+            "description": "regex match for ruby gem in Dockerfile",
+            "customType": "regex",
+            "fileMatch": [
+                "^Dockerfile$"
+            ],
+            "matchStrings": [
+                "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+[\\w\\s]+=(?<currentValue>[\\w+\\.]*)"
+            ]
+        },
+        {
+            "description": "regex match for yaml with datasource definition",
+            "customType": "regex",
+            "fileMatch": [
+                "^config_defaults.yml$"
+            ],
+            "matchStrings": [
+                "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+\\w+:\\s['\"]?(?<currentValue>[\\w+\\.]*)['\"]?"
+            ]
+        },
+        {
+            "description": "regex match for reusable workflows",
+            "customType": "regex",
+            "fileMatch": [
+                ".*.yaml.erb$"
+            ],
+            "matchStrings": [
+                "# renovate: datasource=(?<datasource>.*?)\\s+uses: (?<depName>\\w+\/[\\w-]+).+@(?<currentValue>[\\w+\\.]*)"
+            ]
+        },
+        {
+            "description": "regex match for third party actions",
+            "customType": "regex",
+            "fileMatch": [
+                ".*.yaml.erb$"
+            ],
+            "matchStrings": [
+                "uses: (?<depName>\\w+\/[\\w-]+)@(?<currentValue>[\\w+\\.]*)"
+            ],
+            "datasourceTemplate": "github-actions"
+        }
+    ],
+    "packageRules": [
+        {
+            "matchUpdateTypes": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "schedule": [
+                "before 5am"
+            ]
+        }
+    ]
+}
