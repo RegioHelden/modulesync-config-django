@@ -1,6 +1,8 @@
 ---
 :global:
+  python_target_version: "3.12"
   python_min_version: "3.11"
+  python_supported_versions: ["3.11", "3.12", "3.13"]
   module_rootname: ""
   module_description: ""
   module_keywords: [""]
@@ -18,3 +20,6 @@ compose.yaml:
 Dockerfile:
   # renovate: datasource=github-releases depName=astral-sh/uv
   uv_version: "0.6.14"
+
+.github/dependabot.yml:
+  delete: true
