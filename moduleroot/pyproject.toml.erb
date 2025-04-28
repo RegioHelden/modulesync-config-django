@@ -49,12 +49,10 @@ path = "version"
 pattern = "(?P<version>.+)"
 
 [tool.hatch.build.targets.wheel]
-packages = ["<%= @configs['module_rootname'] %>"]
-include = ["LICENSE", "README.md", "CHANGELOG.md"]
+include = ["LICENSE", "README.md", "CHANGELOG.md", "<%= @configs['module_rootname'] %>/*"]
 
 [tool.hatch.build.targets.sdist]
-packages = ["<%= @configs['module_rootname'] %>"]
-include = ["LICENSE", "README.md", "CHANGELOG.md"]
+include = ["LICENSE", "README.md", "CHANGELOG.md", "<%= @configs['module_rootname'] %>/*"]
 
 [tool.ruff]
 exclude = [
