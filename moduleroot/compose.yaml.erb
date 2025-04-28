@@ -7,8 +7,7 @@ services:
   app:
     build: .
     user: app
-    entrypoint: /app/manage.py
-    command: <%= @configs['compose_command'] %>
+    command: /app/manage.py <%= @configs['compose_command'] %>
     volumes:
       - .:/app:cached
     environment:
