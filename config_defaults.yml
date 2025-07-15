@@ -17,6 +17,7 @@
 
 compose.yaml:
   compose_command: "test"
+  require_postgres: false
 
 Dockerfile:
   # renovate: datasource=github-releases depName=astral-sh/uv
