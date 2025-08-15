@@ -20,8 +20,8 @@
         "enabled": false
     },
     "github-actions": {
-        "fileMatch": [
-            "\\.github\/workflows\/.*\\.ya?ml"
+        "managerFilePatterns": [
+            "/\\.github/workflows/.*\\.ya?ml/"
         ]
     },
     "configMigration": false,
@@ -50,8 +50,8 @@
         {
             "description": "regex match for ruby gem in Dockerfile",
             "customType": "regex",
-            "fileMatch": [
-                "^Dockerfile$"
+            "managerFilePatterns": [
+                "/^Dockerfile$/"
             ],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+[\\w\\s]+=(?<currentValue>[\\w+\\.]*)"
@@ -60,8 +60,8 @@
         {
             "description": "regex match for yaml with datasource definition",
             "customType": "regex",
-            "fileMatch": [
-                "^config_defaults.yml$"
+            "managerFilePatterns": [
+                "/^config_defaults.yml$/"
             ],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+\\w+:\\s['\"]?(?<currentValue>[\\w+\\.]*)['\"]?"
