@@ -60,5 +60,5 @@ jobs:
         run: |
           bundle exec msync update --verbose \
             --pr \
-            --pr-labels infrastucture \
+            --pr-labels infrastructure \
             --pr-title "Updates from modulesync"
