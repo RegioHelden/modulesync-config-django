@@ -21,7 +21,7 @@ compose.yaml:
 
 Dockerfile:
   # renovate: datasource=github-releases depName=astral-sh/uv
-  uv_version: "0.8.15"
+  uv_version: "0.8.17"
 
 .github/dependabot.yml:
   delete: true
