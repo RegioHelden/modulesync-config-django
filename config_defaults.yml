@@ -13,7 +13,7 @@
 .devcontainer/devcontainer.json:
   run_services: ["app"]
   # renovate: datasource=github-releases depName=astral-sh/ruff-vscode
-  vscode_ruff: "2025.24.0"
+  vscode_ruff: "2025.26.0"
 
 compose.yaml:
   compose_command: "test"
