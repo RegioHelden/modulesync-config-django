@@ -15,6 +15,10 @@ env:
   SSH_AUTH_SOCK: /tmp/ssh_agent.sock
   GITHUB_BASE_URL: https://api.github.com
 
+concurrency:
+  group: modulesync-distribution
+  cancel-in-progress: false
+
 jobs:
   msync:
     runs-on: ubuntu-latest
