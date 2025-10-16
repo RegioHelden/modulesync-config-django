@@ -1,6 +1,6 @@
 FROM ruby:3-alpine
 # renovate: datasource=rubygems depName=modulesync
-ENV MODULESYNC_VERSION=4.0.1
+ENV MODULESYNC_VERSION=4.2.0
 
 RUN apk update \
     && apk add curl git openssh-client-default build-base jq \
