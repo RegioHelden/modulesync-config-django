@@ -9,6 +9,9 @@
   dependencies: [""]
   max_line_length: 120
   changelog_since_tag: ""
+  # see https://github.com/astral-sh/ruff/releases
+  # renovate: datasource=github-releases depName=astral-sh/ruff
+  ruff_version: "0.14.6"
 
 .devcontainer/devcontainer.json:
   run_services: ["app"]
