@@ -17,7 +17,7 @@
   run_services: ["app"]
   # see https://github.com/astral-sh/ruff-vscode/releases
   # renovate: datasource=github-releases depName=astral-sh/ruff-vscode
-  vscode_ruff: "2025.32.0"
+  vscode_ruff: "2026.34.0"
 
 compose.yaml:
   compose_command: "test"
