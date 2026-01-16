@@ -15,9 +15,36 @@
 
 .devcontainer/devcontainer.json:
   run_services: ["app"]
+  # the ruff version that's actually used is defined by the
+  # ruff feature that's installed to the devcontainer, the ruff version
+  # shipped with the extension is NOT used!
   # see https://github.com/astral-sh/ruff-vscode/releases
   # renovate: datasource=github-releases depName=astral-sh/ruff-vscode
-  vscode_ruff: "2026.34.0"
+  vscode_ruff_extension_version: "2026.34.0"
+  # same as above, we use ty from environment, not the extension
+  # see https://github.com/astral-sh/ty-vscode/releases
+  # renovate: datasource=github-releases depName=astral-sh/ty-vscode
+  vscode_ty_extension_version: "2026.2.0"
+  # see https://github.com/astral-sh/ty/releases
+  # renovate: datasource=github-releases depName=astral-sh/ty
+  ty_version: "0.0.12"
+  # see https://ghcr.io/devcontainers/features/common-utils
+  # yamllint disable-line rule:line-length
+  # renovate: datasource=docker depName=devcontainers/features/common-utils registryUrl=https://ghcr.io
+  vscode_feature_common_utils_version: "2.5.5"
+  # see https://ghcr.io/devcontainers/features/git
+  # yamllint disable-line rule:line-length
+  # renovate: datasource=docker depName=devcontainers/features/git registryUrl=https://ghcr.io
+  vscode_feature_git_version: "1.3.4"
+  # see https://ghcr.io/devcontainers-extra/features/ruff
+  # yamllint disable-line rule:line-length
+  # renovate: datasource=docker depName=devcontainers-extra/features/ruff registryUrl=https://ghcr.io
+  vscode_feature_ruff_version: "2.0.0"
+  # see https://ghcr.io/devcontainers-extra/features/ty
+  # yamllint disable-line rule:line-length
+  # renovate: datasource=docker depName=devcontainers-extra/features/ty registryUrl=https://ghcr.io
+  vscode_feature_ty_version: "1.0.0"
+
 
 compose.yaml:
   compose_command: "test"
