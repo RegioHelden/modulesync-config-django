@@ -58,13 +58,14 @@
             ]
         },
         {
-            "description": "regex match for yaml with datasource definition",
+            "description": "regex match for default config with datasource definition",
             "customType": "regex",
             "managerFilePatterns": [
                 "/^config_defaults.yml$/"
             ],
             "matchStrings": [
-                "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+\\w+:\\s['\"]?(?<currentValue>[\\w+\\.]*)['\"]?"
+                "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>[^\\s]+?)\\s+\\w+:\\s['\"]?(?<currentValue>[\\w+\\.]*)['\"]?",
+                "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) registryUrl=(?<registryUrl>.*?)\\s+\\w+: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
             ]
         }
     ],
