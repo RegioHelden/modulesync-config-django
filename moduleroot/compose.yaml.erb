@@ -16,23 +16,51 @@ services:
       HISTFILE: /app/.bash_history
       PYTHONPATH: /app  # make app available without installation
     restart: "no"
-<%- if @configs['require_postgres'] -%>
+<%- if @configs['require_mysql'] or @configs['require_postgres'] -%>
     depends_on:
+<%- if @configs['require_mysql'] -%>
+      - mysql
+<%- end -%>
+<%- if @configs['require_postgres'] -%>
       - postgres
+<%- end -%>
+<%- end -%>
+<%- if @configs['require_mysql'] -%>
+
+  mysql:
+    image: docker.io/mysql:9
+    restart: unless-stopped
+    stop_grace_period: 5s
+    volumes:
+      - db_mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      MYSQL_RANDOM_ROOT_PASSWORD: true
+<%- end -%>
+<%- if @configs['require_postgres'] -%>
 
   postgres:
-    image: postgres:17-alpine
+    image: docker.io/postgres:18-alpine
+    restart: unless-stopped
     shm_size: 256m
     user: postgres
     command: -c 'fsync=off' -c 'effective_io_concurrency=10' -c 'max_connections=200' -c 'wal_level=logical'  # yamllint disable-line rule:line-length
+    volumes:
+      - db_postgres_data:/var/lib/postgresql/
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    restart: unless-stopped
+<%- end -%>
+<%- if @configs['require_mysql'] or @configs['require_postgres'] -%>
 
 volumes:
-  db_data: {}
+<%- if @configs['require_mysql'] -%>
+  db_mysql_data: {}
+<%- end -%>
+<%- if @configs['require_postgres'] -%>
+  db_postgres_data: {}
+<%- end -%>
 <%- end -%>
