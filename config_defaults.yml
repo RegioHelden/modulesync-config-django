@@ -48,6 +48,7 @@
 
 compose.yaml:
   compose_command: "test"
+  require_mysql: false
   require_postgres: false
 
 Dockerfile:
