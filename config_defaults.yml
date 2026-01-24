@@ -35,7 +35,7 @@
   # see https://ghcr.io/devcontainers/features/git
   # yamllint disable-line rule:line-length
   # renovate: datasource=docker depName=devcontainers/features/git registryUrl=https://ghcr.io
-  vscode_feature_git_version: "1.3.4"
+  vscode_feature_git_version: "1.3.5"
   # see https://ghcr.io/devcontainers-extra/features/ruff
   # yamllint disable-line rule:line-length
   # renovate: datasource=docker depName=devcontainers-extra/features/ruff registryUrl=https://ghcr.io
