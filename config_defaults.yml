@@ -31,7 +31,7 @@
   # see https://ghcr.io/devcontainers/features/common-utils
   # yamllint disable-line rule:line-length
   # renovate: datasource=docker depName=devcontainers/features/common-utils registryUrl=https://ghcr.io
-  vscode_feature_common_utils_version: "2.5.5"
+  vscode_feature_common_utils_version: "2.5.6"
   # see https://ghcr.io/devcontainers/features/git
   # yamllint disable-line rule:line-length
   # renovate: datasource=docker depName=devcontainers/features/git registryUrl=https://ghcr.io
