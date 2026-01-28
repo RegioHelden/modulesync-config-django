@@ -27,7 +27,7 @@
   vscode_ty_extension_version: "2026.6.0"
   # see https://github.com/astral-sh/ty/releases
   # renovate: datasource=github-releases depName=astral-sh/ty
-  ty_version: "0.0.13"
+  ty_version: "0.0.14"
   # see https://ghcr.io/devcontainers/features/common-utils
   # yamllint disable-line rule:line-length
   # renovate: datasource=docker depName=devcontainers/features/common-utils registryUrl=https://ghcr.io
