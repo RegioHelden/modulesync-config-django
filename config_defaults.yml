@@ -20,7 +20,7 @@
   # shipped with the extension is NOT used!
   # see https://github.com/astral-sh/ruff-vscode/releases
   # renovate: datasource=github-releases depName=astral-sh/ruff-vscode
-  vscode_ruff_extension_version: "2026.34.0"
+  vscode_ruff_extension_version: "2026.36.0"
   # same as above, we use ty from environment, not the extension
   # see https://github.com/astral-sh/ty-vscode/releases
   # renovate: datasource=github-releases depName=astral-sh/ty-vscode
