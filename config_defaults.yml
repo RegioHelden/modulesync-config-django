@@ -24,7 +24,7 @@
   # same as above, we use ty from environment, not the extension
   # see https://github.com/astral-sh/ty-vscode/releases
   # renovate: datasource=github-releases depName=astral-sh/ty-vscode
-  vscode_ty_extension_version: "2026.10.0"
+  vscode_ty_extension_version: "2026.14.0"
   # see https://github.com/astral-sh/ty/releases
   # renovate: datasource=github-releases depName=astral-sh/ty
   ty_version: "0.0.17"
