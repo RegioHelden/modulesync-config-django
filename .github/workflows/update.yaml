@@ -38,7 +38,7 @@ jobs:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1.306.0
         with:
-          ruby-version: 4.0.2
+          ruby-version: 4.0.3
           bundler-cache: true
 
       - name: Add SSH key
