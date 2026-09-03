@@ -1,8 +1,8 @@
 ---
 :global:
-  python_target_version: "3.12"
+  python_target_version: "3.13"
   python_min_version: "3.11"
-  python_supported_versions: ["3.11", "3.12", "3.13"]
+  python_supported_versions: ["3.11", "3.12", "3.13", "3.14"]
   module_rootname: ""
   module_description: ""
   module_keywords: [""]
