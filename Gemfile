@@ -1,4 +1,4 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
-gem 'modulesync', '4.6.0'
+gem 'modulesync', '4.6.1'
 # vim: syntax=ruby
