@@ -38,3 +38,6 @@ Gemfile.lock
 
 # local config
 .env
+
+# Pycharm/Intellij
+.idea
